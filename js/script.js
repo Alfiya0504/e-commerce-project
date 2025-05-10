@@ -50,17 +50,17 @@
                 products.forEach(p => {
                     const productHTML = `
                         <div data-name="${p.name}" class="col-md-4 product ">
-                    <a href='#'  class="product_a" data-id="${p.id}">
+                    
 
                             <div class="card h-100">
-                                <img src="${p.image}" class="card-img-top" height="250px"  alt="${p.name}">
+                               <a href='#'  class="product_a" data-id="${p.id}"> <img src="${p.image}" class="card-img-top" height="250px"  alt="${p.name}">   </a>
                                 <div class="card-body">
                                     <h6 class="card-title">${p.name}</h6>
                                     <p class="card-text">Rs. ${p.price}</p>
                                     <button class="btn btn-primary add-to-cart" data-id="${p.id}">Add to cart</button>
                                 </div>
                             </div>
-                        </a>
+                     
 
                         </div>
                     `;
