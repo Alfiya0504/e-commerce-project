@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Page</title>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      background-color: #fff;
+      margin: 50px auto;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .product-image {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+    }
+
+    .product-name {
+      font-size: 28px;
+      margin: 20px 0 10px;
+    }
+
+    .product-price {
+      font-size: 22px;
+      color: #27ae60;
+    }
+  </style>
+
+  
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+  <div class="container" id="product-container">
+    <!-- Product details will be inserted here -->
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const productsList = [
+        { id: 1, name: "White T-Shirt", price: 550, image: "images/t-shirt.jpg" },
+        { id: 2, name: "Black T-Shirt", price: 600, image: "images/t-shirt2.jpg" },
+        { id: 3, name: "Blue T-Shirt", price: 700, image: "images/t-shirt3.jpg" },
+        { id: 4, name: "Pink T-Shirt", price: 650, image: "images/t-shirt4.jpg" },
+        { id: 5, name: "Red T-Shirt", price: 620, image: "images/t-shirt5.jpg" },
+        { id: 6, name: "Yellow T-Shirt", price: 580, image: "images/t-shirt6.jpg" },
+      ];
+
+      const productId = parseInt(new URLSearchParams(window.location.search).get("id"));
+      const product = productsList.find(p => p.id === productId);
+
+      if (product) {
+        $('#product-container').html(`
+          <img src="${product.image}" alt="${product.name}" class="product-image">
+          <h2 class="product-name">${product.name}</h2>
+          <p class="product-price">Rs: ${product.price}</p>
+        `);
+      } else {
+        $('#product-container').html(`<p>Product not found.</p>`);
+      }
+    });
+  </script>
+
+</body>
+</html>
